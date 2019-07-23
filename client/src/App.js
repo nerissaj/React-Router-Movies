@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {BrowserRouter as Router}  from 'react-router-dom';
+
 import SavedList from './Movies/SavedList';
 import {Route} from 'react-router-dom';
 import Movie from './Movies/Movie';
 import MovieList from './Movies/MovieList';
-import MovieCard from './Movies/MovieCard';
+
+
 
 
 const  App = () => {
@@ -18,12 +19,12 @@ const  App = () => {
   return (
    
     <div>
-      <Router>
-      <SavedList list={savedList} />
-      <Route path="/movielist" component={MovieList}/>      
-      <Route path="/movie/:id" component={Movie} />
       
-      </Router>
+      <SavedList list={savedList} />
+      <Route path="/" exact component={MovieList}/>     
+      <Route path="/movies/:tag" component={()=><Movie id= { 1} /> } />
+      
+      
     </div>
     
   );

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import MovieCard from './MovieCard';
-import {Link} from 'react-router-dom';
 
 
-const Movie = ({match}) => {
-  const{params}= match;
-  const {id} = params || {};
+function Movie({match}){
+  
+  
   
   const [movie, setMovie] = useState({});
  
@@ -51,14 +49,12 @@ const Movie = ({match}) => {
           Metascore: <strong>{metascore}</strong>
         </div>
         <h3>Actors</h3>
-        
         {stars.map(star => (
           <div key={star} className="movie-star">
             {star}
-            <Link to="/movie/1/">Movie 1</Link>{"-"}
-            <Link to="/movie/2/">Movie 2</Link>
+            
 
-            <p>id: {id}</p>
+           
           </div>
         ))}
       </div>

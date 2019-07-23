@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const MovieList = props => {
+function MovieList({match,...props}){
+  console.log('props',props);
+
+  const{params}= match;
+  const {tag} = params || {};
+  
   const [movies, setMovies] = useState([])
   useEffect(() => {
     const getMovies = () => {
@@ -9,6 +14,7 @@ const MovieList = props => {
         .get('http://localhost:5000/api/movies')
         .then(response => {
           setMovies(response.data);
+          
         })
         .catch(error => {
           console.error('Server Error', error);
