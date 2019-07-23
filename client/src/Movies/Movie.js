@@ -5,14 +5,16 @@ import axios from 'axios';
 
 function Movie({match}){
   
+  const{params}= match;
+  const {id} = params || {};
   
   
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(null);
  
   useEffect(() => {
     
      
-    const id = 1;
+   
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -25,7 +27,7 @@ function Movie({match}){
           console.error(error);
         });
 
-  },[]);
+  },[id]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
@@ -58,7 +60,7 @@ function Movie({match}){
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <div className="save-button" onClick={movie.id}>Save</div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import SavedList from './Movies/SavedList';
-import {Route} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
 import Movie from './Movies/Movie';
 import MovieList from './Movies/MovieList';
 
@@ -21,10 +21,17 @@ const  App = () => {
     <div>
       
       <SavedList list={savedList} />
-      <Route path="/" exact component={MovieList}/>     
-      <Route path="/movies/:tag" component={()=><Movie id= { 1} /> } />
       
+    
+        
+      <Route path="/" exact render={props => { 
+        console.log("movies.id.props", props);
+        return <MovieList {...props}  />; } }/>
       
+      <Route path="/Movies/:id"render={(props) => (
+  <Movie
+    {...props}
+      /> )}/>
     </div>
     
   );

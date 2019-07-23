@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {Link } from 'react-router-dom';
 
 function MovieList({match,...props}){
   console.log('props',props);
 
-  const{params}= match;
-  const {tag} = params || {};
   
   const [movies, setMovies] = useState([])
   useEffect(() => {
@@ -26,8 +25,8 @@ function MovieList({match,...props}){
   
   return (
     <div className="movie-list">
-      {movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
+      {movies.map(movie => (<Link to={`Movies/${movie.id}`}>
+        <MovieDetails key={movie.id} movie={movie} /></Link>
       ))}
     </div>
   );
