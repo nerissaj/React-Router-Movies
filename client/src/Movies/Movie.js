@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Movie = (props) => {
-  const [movie, setMovie] = useState({});
+
+
+function Movie({match}){
+  
+  const{params}= match;
+  const {id} = params || {};
+  
+  
+  const [movie, setMovie] = useState(null);
  
   useEffect(() => {
-    const id = 1;
+    
+     
+   
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -18,7 +27,7 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[]);
+  },[id]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
@@ -42,14 +51,16 @@ const Movie = (props) => {
           Metascore: <strong>{metascore}</strong>
         </div>
         <h3>Actors</h3>
-
         {stars.map(star => (
           <div key={star} className="movie-star">
             {star}
+            
+
+           
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <div className="save-button" onClick={movie.id}>Save</div>
     </div>
   );
 }
